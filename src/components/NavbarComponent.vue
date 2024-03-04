@@ -1,8 +1,14 @@
+<script setup>
+import DropDownComponent from "./DropDownComponent.vue";
+
+</script>
+
+
 <template>
-<body>
-<nav class="relative px-4 py-4 flex justify-between items-center bg-white border-b-2">
+<nav>
+<div class="relative py-4 flex justify-between items-center bg-white border-b-2 xl:px-72 lg:px-40 md:px-32 sm:px-16">
   <a class="text-3xl font-bold leading-none" href="/">
-      <img class="h-24 ease-in-out duration-300 btn-ghost  " :src="logoMinistere" alt="Logo du Ministère des Solidarités et de la Famille"/>
+      <img class="h-44 ease-in-out duration-300 btn-ghost  " :src="logoMinistere" alt="Logo du Ministère des Solidarités et de la Famille"/>
   </a>
   <div class="lg:hidden">
     <button class="navbar-burger flex items-center text-blue-600 p-3">
@@ -12,40 +18,42 @@
       </svg>
     </button>
   </div>
-  <router-link to="/login" class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-100 hover:bg-gray-300 text-sm text-gray-900 font-bold  rounded-xl transition duration-200">Connexion</router-link>
-  <router-link to="/register" class="hidden lg:inline-block py-2 px-6  bg-blue-600 hover:bg-blue-300 text-sm text-white font-bold rounded-xl transition duration-200">S'inscrire</router-link>
-</nav>
+  <div class="lg:flex flex-col hidden max-w-l w-1/3 xl:w-1/2 lg:w-2/3">
 
-<ul class="hidden relative pl-10  pt-10 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-  <li>
-    <a class="text-lg text-gray-400 hover:text-gray-500" href="/">Accueil</a></li>
-  <li>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-    </svg>
-  </li>
-  <li>
-    <a class="text-lg text-gray-400 hover:text-gray-500" href="#">Catégorie A</a></li>
-  <li>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-    </svg>
-  </li>
-  <li>
-    <a class="text-lg text-gray-400 hover:text-gray-500" href="#">Catégorie B</a></li>
-  <li>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-    </svg>
-  </li>
-  <li>
-    <a class="text-lg text-gray-400 hover:text-gray-500" href="#">Catégorie C</a></li>
-  <li>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-    </svg>
-  </li>
-  <li><a class="text-lg text-gray-400 hover:text-gray-500" href="#">Catégorie D</a></li>
+  <div class=" text-right mb-6 flex">
+    <router-link to="/login" class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-100 hover:bg-gray-300 text-sm text-gray-900 font-semibold rounded-xl transition duration-200">Connexion</router-link>
+    <router-link to="/register" class="hidden lg:inline-block py-2 px-6  bg-blue-600 hover:bg-blue-300 text-sm text-white font-semibold rounded-xl transition duration-200">S'inscrire</router-link>
+  </div>
+
+    <form class="lg:block hidden mx-auto w-full ">
+      <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+          </svg>
+        </div>
+        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+        <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+      </div>
+    </form>
+
+
+
+  </div>
+</div>
+
+<ul class="hidden whitespace-nowrap bold relative pl-10 pt-10 xl:px-72 lg:px-40 md:px-32 sm:px-16 left-1/2 transform border-b-2 -translate-y-1/2 -translate-x-1/2 text- lg:flex lg:items-center lg:w-auto lg:space-x-6">
+    <DropDownComponent class="flex text-gray-700 p-2 xl:px-6 px-3 hover:bg-gray-100 ml-4">
+    </DropDownComponent>
+  <DropDownComponent class="flex text-gray-700 p-2 xl:px-6 px-3 hover:bg-gray-100 ml-4">
+  </DropDownComponent>
+  <DropDownComponent class="flex text-gray-700 p-2 xl:px-6 px-3 hover:bg-gray-100 ml-4">
+  </DropDownComponent>
+  <DropDownComponent class="flex text-gray-700 p-2 xl:px-6 px-3 hover:bg-gray-100 ml-4">
+  </DropDownComponent>
+  <DropDownComponent class="flex text-gray-700 p-2 xl:px-6 px-3 hover:bg-gray-100 ml-4">
+  </DropDownComponent>
 </ul>
 
 <div class="navbar-menu relative z-50 hidden">
@@ -83,7 +91,7 @@
     </div>
     <div class="mt-auto">
       <div class="pt-6">
-        <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+        <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold  bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
         <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
       </div>
       <p class="my-4 text-xs text-center text-gray-400">
@@ -93,7 +101,7 @@
   </nav>
 </div>
 
-</body>
+</nav>
 
 </template>
 
@@ -105,7 +113,7 @@ export default defineComponent({
   computed: {
     logoMinistere() {
       return logoMinistere
-    }
+    },
   }
 })
 

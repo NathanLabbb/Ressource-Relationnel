@@ -7,7 +7,6 @@
         <form class="flex flex-col gap-y-5" v-on:submit.prevent="login">
 
           <input id="email" v-model="emailLog" name="email" type="email" placeholder=" E-mail" class="flex  border border-black px-4 py-1 rounded">
-
           <input id="password" v-model="passwordLog" name="password" type="password" placeholder=" Mot de passe" class="flex border border-black px-4 py-1 rounded">
 
           <div class="flex justify-center gap-x-4 items-center">
@@ -23,7 +22,8 @@
       </article>
     </section>
     <div class="flex justify-center p-5">
-      <a id="leBouton" href="#" onclick="$(this).closest('form').submit()"><img src="../assets/images/logo-fc.svg" height="60" width="200" alt="S'identifier avec FranceConnect"></a>
+      <a id="leBouton" href="#" @click.prevent="loginWithFranceConnect">
+        <img src="../assets/images/logo-fc.svg" height="60" width="200" alt="S'identifier avec FranceConnect"></a>
     </div>
 
   </div>
@@ -44,39 +44,12 @@ export default {
   data()
   {
     return {
-      firstName: '',
-      lastName: '',
-      Pseudo: '',
-      email: '',
-      phone: '',
-      password: '',
-      passwordConfirm: '',
       emailLog: '',
       passwordLog: '',
     }
   },
 
   methods: {
-    register() {
-      axios.post('/api/login',
-          {
-            firstname:this.firstName,
-            lastname:this.lastName,
-            pseudo:this.Pseudo,
-            email:this.email,
-            phone:this.phone,
-            password:this.password,
-          })
-          .then((result) => {
-            router.push({name:'home'})
-          })
-          .catch((erreur) =>
-          {
-            console.log(erreur)
-          })
-    },
-
-
     login() {
       axios.post('/api/login',
           {
@@ -84,15 +57,19 @@ export default {
             passwordLog:this.passwordLog,
           })
           .then((result) => {
-            localStorage.setItem('usertoken', result.data.token)
-            this.emailLog = ''
-            this.passwordLog = ''
+            localStorage.setItem('usertoken', result.data.token);
+            this.emailLog = '';
+            this.passwordLog = '';
             router.push({name: 'home'})
           })
           .catch((err) => {
             console.log(err)
           })
     },
+    loginWithFranceConnect() {
+      // Vous pouvez implémenter la logique de connexion avec FranceConnect ici
+      // par exemple, en redirigeant vers l'URL de FranceConnect
+    }
   },
 
 };
