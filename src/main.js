@@ -4,5 +4,6 @@ import router from './router';
 import './style.css';
 import axios from  'axios';
 
-axios.defaults.baseURL = import.meta.env.VITE_URL_API;
+//axios.defaults.baseURL = import.meta.env.VUE_APP_API_ENDPOINT;
+axios.defaults.baseURL = "http://10.134.128.164:8000";
 createApp(App).use(router).mount('#app');

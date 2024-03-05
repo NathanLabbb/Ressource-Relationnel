@@ -27,7 +27,7 @@
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div class="flex justify-start text-xs light divide-x-2 xl:px-72 lg:px-56 md:px-32 sm:px-16">
-        <a href="/LegalMention" class="pl-3 pr-3">Mentions légales</a>
+        <a href="/mentions" class="pl-3 pr-3">Mentions légales</a>
         <a href="#" class="pl-3 pr-3">Données personnelles</a>
         <a href="#" class="pl-3 pr-3">Gestion des cookies</a>
       </div>

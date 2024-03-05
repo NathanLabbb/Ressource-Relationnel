@@ -1,40 +1,59 @@
 <template>
-  <div @click="toggleDropdown" class="dropdown">
-    <button >{{ firstdisplay }}</button>
-    <ul v-if="isOpen" class="dropdown-list w-56">
-      <li v-for="option in options" :key="option.id" @click="selectOption(option)" class="p-6">
-        <a :href="option.name">{{ option.name }}</a>
-      </li>
-    </ul>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="pl-2 w-4">
-      <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
-    </svg>
-  </div>
+      <div @click="toggleDropdown(index)"  :key="index" :class="{'bg-blue-100': this.isOpen[index], 'hover:bg-blue-100': this.isOpen[index]}" class="dropdown flex text-gray-700 hover:bg-gray-100 p-2 xl:px-6 px-3 ml-4">
+        <button  :class="{'text-blue-500': this.isOpen[index]}">{{ CategoryName }}</button>
+        <ul v-if="isOpen[index]" class="dropdown-list w-56 bg-blue">
+          <li v-for="option in options" :key="option.id" @click="selectOption(option, index)" class="p-6">
+            <a :href="option.href">{{ option.name }}</a>
+          </li>
+        </ul>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="pl-2 w-4">
+          <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
+        </svg>
+      </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      isOpen: false,
+      isOpen: [],
       selectedOption: null,
-      firstdisplay: 'To add Here',
+      selectedDropdownIndex: null,
+      CategoryName: 'To add Here',
       options: [
-        { id: 1, name: 'Option 1' },
-        { id: 2, name: 'Option 2' },
-        { id: 3, name: 'Option 3' },
-        // Ajoutez autant d'options que nécessaire
+        { id: 1, name: 'Go to Catalogue',href: "catalogue"},
+        { id: 2, name: 'Go to Article', href: "article"},
+        { id: 3, name: 'Option 3', href: "#"},
       ]
     };
   },
+  mounted() {
+    document.addEventListener('click', this.closeDropdowns);
+  },
+  beforeDestroy() {
+    document.removeEventListener('click', this.closeDropdowns);
+  },
   methods: {
-    toggleDropdown() {
-      this.isOpen = !this.isOpen;
+    toggleDropdown(index) {
+      if (this.selectedDropdownIndex === index) {
+        this.isOpen[index] = !this.isOpen[index];
+      } else {
+        this.isOpen = this.isOpen.map(() => false); // Close all dropdowns
+        this.isOpen[index] = true; // Open the clicked dropdown
+        this.selectedDropdownIndex = index; // Update the selected index
+      }
     },
-    selectOption(option) {
+
+    selectOption(option, index) {
       this.selectedOption = option.name;
-      this.isOpen = false;
+      this.isOpen[index] = false;
       this.$emit('option-selected', option);
+    },
+    closeDropdowns(event) {
+      if (!event.target.closest('.dropdown')) {
+        this.isOpen = this.isOpen.map(() => false);
+        this.selectedDropdownIndex = null;
+      }
     }
   }
 };
@@ -58,7 +77,6 @@ export default {
   border-top: none;
   border-radius: 0 0 4px 4px;
 }
-
 
 .dropdown-list li:hover {
   background-color: #ddd;

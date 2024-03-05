@@ -23,19 +23,19 @@ export default createRouter({
       component: RegisterView,
     },
     {
-      path:'/Article',
+      path:'/article',
       component: ArticleView,
     },
     {
-      path:'/Catalogue',
+      path:'/catalogue',
       component: CatalogueView,
     },
     {
-      path:'/LegalMention',
+      path:'/mentions',
       component: LegalMentionView,
     },
     {
-      path:'/PersonalData',
+      path:'/profil',
       component: PersonalDataView,
     },
   ],
