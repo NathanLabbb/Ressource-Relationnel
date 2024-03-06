@@ -1,6 +1,6 @@
 <template>
-  <div class="relative left-1/4 p-8">
-    <h1 class="bold text-2xl">TITRE CATEGORY</h1>
+  <div class="flex justify-center p-8">
+    <h1 class="bold text-2xl -z-30">TITRE CATEGORY</h1>
   </div>
   <div class="flex flex-wrap justify-center px-8">
     <div v-for="(article, index) in articles" :key="index">

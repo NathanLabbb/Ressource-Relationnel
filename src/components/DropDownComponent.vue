@@ -1,7 +1,7 @@
 <template>
       <div @click="toggleDropdown(index)"  :key="index" :class="{'bg-blue-100': this.isOpen[index], 'hover:bg-blue-100': this.isOpen[index]}" class="dropdown flex text-gray-700 hover:bg-gray-100 p-2 xl:px-6 px-3 ml-4">
         <button  :class="{'text-blue-500': this.isOpen[index]}">{{ CategoryName }}</button>
-        <ul v-if="isOpen[index]" class="dropdown-list w-56 bg-blue">
+        <ul v-if="isOpen[index]" class="dropdown-list w-56 bg-blue z-40">
           <li v-for="option in options" :key="option.id" @click="selectOption(option, index)" class="p-6">
             <a :href="option.href">{{ option.name }}</a>
           </li>
@@ -21,9 +21,13 @@ export default {
       selectedDropdownIndex: null,
       CategoryName: 'To add Here',
       options: [
-        { id: 1, name: 'Go to Catalogue',href: "catalogue"},
-        { id: 2, name: 'Go to Article', href: "article"},
-        { id: 3, name: 'Option 3', href: "#"},
+        { id: 1, name: 'Go to Catalogue',href: "catalogue"}, // Placeholder à changer
+        { id: 2, name: 'Go to Article', href: "article"}, // Placeholder à changer
+        { id: 3, name: 'Go to Profil', href: "profil"}, // Placeholder à changer
+        { id: 4, name: 'Go to Create', href: "/category/article/create"}, // Placeholder à changer
+        { id: 5, name: 'Go to Dashboard', href: "/dashboard/home"}, // Placeholder à changer
+
+
       ]
     };
   },

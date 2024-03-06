@@ -1,8 +1,8 @@
 <script>
 import axios from "axios";
-import router from "../router"
+import router from "../../router.js"
 
-import('../assets/login.css');
+import('../../assets/login.css');
 export default {
   created() {
     /*axios
